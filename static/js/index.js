@@ -73,8 +73,18 @@ document.querySelectorAll('.comparison-wipe').forEach((wipe) => {
     await prepareMedia(video);
     if (video.readyState >= 2) return;
     await new Promise((resolve, reject) => {
-      video.addEventListener('canplay', resolve, { once: true });
-      video.addEventListener('error', reject, { once: true });
+      const cleanup = () => {
+        video.removeEventListener('canplay', onReady);
+        video.removeEventListener('error', onError);
+      };
+      const onReady = () => { cleanup(); resolve(); };
+      const onError = () => { cleanup(); reject(video.error || new Error('Video failed to load')); };
+      video.addEventListener('canplay', onReady, { once: true });
+      video.addEventListener('error', onError, { once: true });
+      // Range-capable hosts keep the original URL. Explicitly start loading
+      // because comparison videos use preload="none" until they are visible.
+      video.preload = 'auto';
+      video.load();
     });
   };
   const seek = (video, time) => new Promise((resolve) => {
