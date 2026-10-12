@@ -146,3 +146,18 @@ footer { padding-top: 16px; padding-bottom: 16px; }
 .video-dots button[aria-current="true"]::after { background: var(--teal); }
 .video-counter { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
 .video-slider :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+.results-demo-card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+.results-demo-heading { padding: 18px 22px 16px; background: #f2f4ef; }
+.results-demo-heading h3 { margin: 0 0 5px; font: 750 22px "Manrope", sans-serif; color: var(--ink); }
+.results-demo-heading p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.results-demo-card .main-demo { border-radius: 0; }
+#custom-videos { scroll-margin-top: 84px; }
+
+/* Mark the start of the results section. */
+.results-overview { padding-bottom: 36px; border-top: 1px solid var(--line); }
+.video-showcase.section { padding-top: 28px; }
+@media (max-width: 768px) {
+  .results-overview { padding-bottom: 28px; }
+  .video-showcase.section { padding-top: 22px; }
+}

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="stylesheet" href="./static/css/title-fix.css?v=injection-example-2">
+  <link rel="stylesheet" href="./static/css/title-fix.css?v=section-separation-2">
 </head>
 <body>
   <nav class="site-nav" aria-label="Section navigation">
@@ -51,9 +51,9 @@
 
     <section class="section teaser-section">
       <div class="container is-max-desktop">
-        <video class="main-demo" controls autoplay muted loop playsinline preload="metadata" aria-label="Dusting the Phantom main demonstration">
-          <source src="./static/videos/main_demo.mp4" type="video/mp4">
-          Your browser does not support embedded video. <a href="./static/videos/main_demo.mp4">Download the demo.</a>
+        <video class="main-demo" controls autoplay muted loop playsinline preload="metadata" aria-label="Overview of our Gaussian allocation process">
+          <source src="./static/videos/procedure_demo.mp4" type="video/mp4">
+          Your browser does not support embedded video. <a href="./static/videos/procedure_demo.mp4">Download the procedure demo.</a>
         </video>
         <p class="teaser-copy"><strong>Fast motion should not become a phantom.</strong> We place Gaussians where and when dynamic content needs them.</p>
       </div>
@@ -63,13 +63,30 @@
       <div class="container is-max-desktop narrow">
         <div class="section-heading has-text-centered"><span class="section-number">01</span><h2>Abstract</h2></div>
         <div class="abstract-card">
-          <p>Dynamic Gaussian representations enable high-quality, real-time volumetric video, yet small, fast-moving objects and fine textures can still disappear. More training or more Gaussians does not reliably solve this problem: the bottleneck is <strong>where and when capacity is allocated</strong>. <strong class="abstract-highlight">Seed Injection</strong> uses temporal appearance changes and reconstruction errors to identify under-reconstructed dynamic regions, then introduces new Gaussians at geometrically plausible 3D locations from multi-view observations. <strong class="abstract-highlight">Temporal Biased Relocation</strong> uses time-resolved optimization signals to guide <strong>when and where</strong> existing Gaussian capacity is reassigned. Both strategies preserve the underlying scene representation. Experiments across dynamic-scene datasets show improved reconstruction quality, especially for small, rapidly moving objects and fine textures.</p>
+          <p>Dynamic Gaussian representations have made high-quality, real-time volumetric video increasingly practical, yet challenging motion can still break their reconstruction: a small fast-moving object may partially disappear, and fine textures in highly dynamic regions are often lost. In particular, simply training longer or using more Gaussians may still fail to recover small, fast-moving objects. We argue that the key bottleneck is not representational capacity itself, but <strong>where and when gaussian primitives are allocated</strong>. We introduce two complementary strategies for improved spatiotemporal Gaussian allocation. First, <strong class="abstract-highlight">Seed Injection</strong> introduces new Gaussians directly from multi-view observations while maintaining a fixed Gaussian budget, using temporal appearance changes and reconstruction errors to identify under-reconstructed dynamic regions and place new Gaussians at geometrically plausible 3D locations. This allows the model to recover content that may have little or no existing Gaussian support. Second, <strong class="abstract-highlight">Temporal Biased Relocation</strong> preserves time-resolved optimization signals and uses them to guide <strong>when and where</strong> relocated Gaussians should be reassigned. Both strategies can be incorporated into existing dynamic Gaussian frameworks without modifying their underlying scene representation. Experiments across multiple dynamic-scene datasets show consistent improvements in reconstruction quality, particularly in highly dynamic regions, including the recovery of small, rapidly moving objects and fine-grained appearance details.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="section results-overview" id="results">
+      <div class="container is-max-desktop">
+        <div class="section-heading has-text-centered"><span class="section-number">02</span><h2>Results</h2></div>
+        <article class="results-demo-card" aria-labelledby="results-demo-title">
+          <div class="results-demo-heading">
+            <h3 id="results-demo-title">Recovering dynamic details</h3>
+            <p>See our reconstruction results on fast-moving objects and fine textures.</p>
+          </div>
+          <video class="main-demo" controls playsinline preload="metadata" aria-label="Dusting the Phantom results demonstration">
+            <source src="./static/videos/main_demo.mp4" type="video/mp4">
+            Your browser does not support embedded video. <a href="./static/videos/main_demo.mp4">Download the results demo.</a>
+          </video>
+        </article>
       </div>
     </section>
 
     <section class="section video-showcase" aria-label="Dynamic scene comparisons">
       <div class="container is-max-desktop">
+        <div class="section-heading has-text-centered"><h2>Comparisons</h2></div>
         <section class="dataset-videos" aria-labelledby="custom-videos">
           <h2 class="dataset-title" id="custom-videos">Custom</h2>
           <div class="video-slider" role="region" aria-roledescription="carousel" aria-label="CUSTOM scene comparisons">
@@ -219,7 +236,7 @@
 
     <section class="section method-section" id="method">
       <div class="container is-max-desktop">
-        <div class="section-heading has-text-centered"><span class="section-number">02</span><h2>Gaussian Allocation, Reconsidered</h2><p>Allocate Gaussians where and when they are needed.</p></div>
+        <div class="section-heading has-text-centered"><span class="section-number">03</span><h2>Gaussian Allocation, Reconsidered</h2><p>Allocate Gaussians where and when they are needed.</p></div>
         <div class="method-grid">
           <article class="method-card seed-card">
             <div class="card-topline"><span>01</span><span class="mini-tag">SPACE</span></div>
@@ -239,7 +256,7 @@
             <p>Red markers show actual Gaussian injection locations in our custom dataset. Seed Injection adds support to dynamic regions with high reconstruction error, including areas that conventional relocation can miss because they lack suitable existing Gaussians.</p>
           </article>
           <article class="method-card relocation-card">
-            <div class="card-topline"><span>02</span><span class="mini-tag">TIME</span></div>
+            <div class="card-topline"><span>02</span><span class="mini-tag">SPACE &amp; TIME</span></div>
             <h3>Temporal Biased Relocation</h3>
             <figure class="method-figure">
               <a href="./static/images/Fig_2.jpg" target="_blank" rel="noopener" aria-label="View Temporal Biased Relocation diagram at full resolution">
@@ -255,7 +272,7 @@
 
     <section class="section bibtex-section" id="bibtex">
       <div class="container is-max-desktop">
-        <div class="section-heading has-text-centered"><span class="section-number">03</span><h2>BibTeX</h2><p>Citation details will be added when available.</p></div>
+        <div class="section-heading has-text-centered"><span class="section-number">04</span><h2>BibTeX</h2><p>Citation details will be added when available.</p></div>
         <pre aria-label="BibTeX placeholder"><code>% BibTeX placeholder — citation coming soon.
 % Dusting the Phantom:
 % Gaussian Allocation for Fading Dynamic Content</code></pre>
