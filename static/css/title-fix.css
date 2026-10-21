@@ -139,7 +139,8 @@ footer { padding-top: 16px; padding-bottom: 16px; }
 .video-navigation { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 8px; }
 .video-navigation button { cursor: pointer; border: 1px solid var(--line); background: white; color: var(--ink); }
 .video-prev, .video-next { width: 36px; height: 36px; border-radius: 50%; font-size: 19px; }
-.video-navigation button:disabled { opacity: .35; cursor: default; }
+.video-navigation .video-prev, .video-navigation .video-next { background: #b8d8ca; border-color: #b5cebf; color: #466b5d; }
+.video-navigation button:disabled { opacity: 1; cursor: default; }
 .video-dots { display: flex; gap: 4px; }
 .video-dots button { width: 24px; height: 28px; padding: 0; border: 0; background: transparent; }
 .video-dots button::after { content: ''; display: block; width: 8px; height: 8px; margin: auto; border-radius: 50%; background: #cbd5cf; }
